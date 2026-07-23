@@ -1,0 +1,25 @@
+[project]
+name = "mental-health-rl-summative"
+version = "0.1.0"
+description = "Reinforcement learning agents for mental health support triage and matching (mission-based RL summative)"
+requires-python = ">=3.10"
+dependencies = [
+    "gymnasium>=0.29.1",
+    "stable-baselines3[extra]>=2.3.0",
+    "pygame>=2.5.2",
+    "numpy>=1.26.0",
+    "matplotlib>=3.8.0",
+    "pandas>=2.2.0",
+    "torch>=2.2.0",
+    "tensorboard>=2.16.0",
+]
+
+[project.scripts]
+main = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["environment", "training"]
