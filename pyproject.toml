@@ -2,7 +2,7 @@
 name = "mental-health-rl-summative"
 version = "0.1.0"
 description = "Reinforcement learning agents for mental health support triage and matching (mission-based RL summative)"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "gymnasium>=0.29.1",
     "stable-baselines3[extra]>=2.3.0",
