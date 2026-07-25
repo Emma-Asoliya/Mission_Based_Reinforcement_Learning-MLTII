@@ -96,7 +96,7 @@ class TriageRenderer:
                 color = ACCENT if s < occupied else (50, 54, 64)
                 pygame.draw.circle(self.screen, color, (icon_x, icon_yy), 12)
 
-        def _draw_current_request(self, env):
+    def _draw_current_request(self, env):
             y = 410
             rect = pygame.Rect(20, y, 860, 60)
             pygame.draw.rect(self.screen, PANEL_COLOR, rect, border_radius=10)
@@ -118,7 +118,7 @@ class TriageRenderer:
                 True, TEXT_COLOR)
             self.screen.blit(txt, (80, y + 20))
 
-        def _draw_queue_panel(self, env):
+    def _draw_queue_panel(self, env):
             y = 480
             rect = pygame.Rect (20, y, 860, 60)
             pygame.draw.rect(self.screen, PANEL_COLOR, rect, border_radius=10)
@@ -131,5 +131,5 @@ class TriageRenderer:
                 pygame.draw.circle(self.screen, color, (x, y +38), 8)
                 x += 22
 
-            def close(self):
+    def close(self):
                 pygame.quit()
