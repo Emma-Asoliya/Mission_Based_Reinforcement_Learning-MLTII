@@ -18,9 +18,9 @@ LOG_DIR_PG = "logs/pg"
 os.makedirs(MODEL_DIR_PG, exist_ok=True)
 os.makedirs(LOG_DIR_PG, exist_ok=True)
 
-def make_env():
+def make_env(log_path=None):
     env = MentalHealthTriageEnv(max_requests=50, max_steps=200)
-    env = Monitor(env, LOG_DIR_PG)
+    env = Monitor(env, log_path if log_path else LOG_DIR_PG)
     return env
 
 def train_reinforce(
@@ -31,7 +31,7 @@ def train_reinforce(
         run_name: str = "reinforce_default",
 
 ):
-    env = make_env()
+    env = make_env(log_path=f"{LOG_DIR_PG}/{run_name}")
     model = PPO(
         policy="MlpPolicy",
         env=env,
@@ -63,7 +63,7 @@ def train_ppo(
         run_name: str = "ppo_default",
 ):
 
-    env = make_env()
+    env = make_env(log_path=f"{LOG_DIR_PG}/{run_name}")
     model = PPO(
         policy="MlpPolicy",
         env=env,
@@ -94,7 +94,7 @@ def train_a2c(
 ):
     """Train an A2C (Advantage Actor-Critic) agent on the MentalHealthTriageEnv."""
 
-    env = make_env()
+    env = make_env(log_path=f"{LOG_DIR_PG}/{run_name}")
     model = A2C(
         policy="MlpPolicy",
         env=env,

@@ -16,9 +16,9 @@ LOG_DIR = "logs/dqn"
 os.makedirs(MODEL_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)
 
-def make_env():
+def make_env(log_path=None):
     env = MentalHealthTriageEnv(max_requests=50, max_steps=200)
-    env = Monitor(env, LOG_DIR)
+    env = Monitor(env, log_path if log_path else LOG_DIR)
     return env
 
 def train_dqn(
@@ -32,8 +32,7 @@ def train_dqn(
 ):
     """Train a single DQN aget with the given hyperparameters."""
 
-    env = make_env()
-
+    env = make_env(log_path=f"{LOG_DIR}/{run_name}")
     model = DQN(
         policy="MlpPolicy",
         env=env,
